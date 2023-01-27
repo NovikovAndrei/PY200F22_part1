@@ -5,18 +5,24 @@ class Book:
     """ Базовый класс книги. """
 
     def __init__(self, name: str, author: str):
-        self.name = name
+        self._name = name
         self.author = author
+        self.is_valid_name(self.name)
+
+    def is_valid_name(self, name):
+        if not isinstance(name, str):
+            raise TypeError("Название может быть только типа str")
+        self._name = name
 
     @property
     def name(self) -> str:
-        return self.__name
+        return self._name
 
-    @name.setter
-    def name(self, name: str):
-        if not isinstance(name, str):
-            raise TypeError("Название может быть только типа str")
-        self.__name = name
+    # @name.setter
+    # def name(self, name: str):
+    #     if not isinstance(name, str):
+    #         raise TypeError("Название может быть только типа str")
+    #     self.__name = name
 
     @property
     def author(self) -> str:
@@ -84,6 +90,7 @@ class AudioBook(Book):
 
 
 if __name__ == "__main__":
-    a = PaperBook("LOtR", "Tolkien", 22)
-    b = AudioBook('HarryPotter', 'Joanne Rowling', 1)
+    # a = PaperBook("LOtR", "Tolkien", 22)
+    # b = AudioBook('HarryPotter', 'Joanne Rowling', 1)
     c = Book("HP", 'Joanne Rowling')
+    print(c)
